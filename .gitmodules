@@ -1,0 +1,21 @@
+[submodule "pack/plugins/start/minibufexpl.vim"]
+	path = pack/plugins/start/minibufexpl.vim
+	url = https://github.com/vim-scripts/minibufexpl.vim.git
+[submodule "pack/plugins/start/tagbar"]
+	path = pack/plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "pack/plugins/start/jedi-vim"]
+	path = pack/plugins/start/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "pack/plugins/start/ctrlp"]
+	path = pack/plugins/start/ctrlp
+	url = git@github.com:kien/ctrlp.vim.git
+[submodule "pack/plugins/start/fugitive"]
+	path = pack/plugins/start/fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "pack/plugins/start/csapprox"]
+	path = pack/plugins/start/csapprox
+	url = git@github.com:godlygeek/csapprox.git
+[submodule "pack/plugins/start/dirdiff"]
+	path = pack/plugins/start/dirdiff
+	url = git@github.com:will133/vim-dirdiff.git
