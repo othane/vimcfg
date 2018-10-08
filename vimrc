@@ -147,4 +147,5 @@ set listchars=trail:·,space:·,tab:__
 set list
 hi SpecialKey ctermfg=grey guifg=grey40
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
