@@ -149,3 +149,5 @@ hi SpecialKey ctermfg=grey guifg=grey40
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall

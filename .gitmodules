@@ -28,3 +28,9 @@
 [submodule "pack/plugins/start/editorconfig-vim"]
 	path = pack/plugins/start/editorconfig-vim
 	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "pack/plugins/start/emmet-vim"]
+	path = pack/plugins/start/emmet-vim
+	url = git@github.com:mattn/emmet-vim.git
+[submodule "pack/plugins/start/MatchTag"]
+	path = pack/plugins/start/MatchTag
+	url = git@github.com:gregsexton/MatchTag.git

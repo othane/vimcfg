@@ -30,6 +30,10 @@ typescript-vim -- typescript syntax highlighting
 
 tsuquyomi -- omni complete `<C-x> <C-o>` for typescript
 
+MatchTag -- HTML tag hihglighting
+
+emmet -- HTML/CSS autogen/refector stuff
+
 
 ## See these gists for the inspiration for this
 
