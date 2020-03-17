@@ -34,3 +34,9 @@
 [submodule "pack/plugins/start/MatchTag"]
 	path = pack/plugins/start/MatchTag
 	url = git@github.com:gregsexton/MatchTag.git
+[submodule "pack/plugins/opt/vim-airline-themes"]
+	path = pack/plugins/opt/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "pack/plugins/opt/vim-airline"]
+	path = pack/plugins/opt/vim-airline
+	url = https://github.com/vim-airline/vim-airline
