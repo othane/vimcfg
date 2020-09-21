@@ -3,6 +3,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 syntax on
+"syntax sync fromstart
+syntax sync minlines=200
 filetype plugin indent on
 
 "behave mswin
@@ -13,7 +15,7 @@ set mouse=a
 
 colorscheme molokai
 if &diff
-"   colorscheme github
+"   "colorscheme github
     colorscheme molokai
 endif
 
@@ -60,10 +62,10 @@ map <F11> :TagbarShowTag<CR>
 
 map <A-F12> :!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q -I packed+ .<CR>
 map <C-F12> :!ctags -R --fields=+l --languages=python,javascript --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js"`<CR>
-map <C-F11> :!ctags -R --fields=+l --languages=python,javascript --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py" -o -name "*.js"`<CR>
+map <C-F9> :!ctags -R --fields=+l --languages=python,javascript --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py" -o -name "*.js"`<CR>
 "map <A-F12> :!find . -type f -iregex ".*\.js$" -exec jsctags {} -f \; <bar> sed "/^$/d" <bar> sort > jstags<CR>
 map <leader><F12> :!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q -I packed+ --languages=+python,javascript --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js" -o -name "*.c" -o -name "*.cpp" -o -name "*.h"`<CR>
-map <leader><F11> :!ctags -R --fields=+l --languages=+python --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py"`<CR>
+map <leader><F9> :!ctags -R --fields=+l --languages=+python --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py"`<CR>
 
 "map <C-F> :lvim /<c-r>=expand("<cword>")<cr>/j ./**/*.[ch] ./**/*.cpp ./**/*.py ./**/*.js ./**/*.html<CR>:lw<CR>A
 map <C-F> :lvim /<c-r>=expand("<cword>")<cr>/j ./**/*.[ch] ./**/*.cpp ./**/*.py ./**/*.js ./**/*.html $VIRTUAL_ENV/**/*.py<CR>:lw<CR>
@@ -149,7 +151,7 @@ set shiftwidth=4
 set tabstop=4
 
 set printexpr=PrintFile(v:fname_in)
-function PrintFile(fname)
+function! PrintFile(fname)
   call system("kprinter " . a:fname)
   call delete(a:fname)
   return v:shell_error
@@ -160,7 +162,38 @@ runtime macros/matchit.vim
 "set listchars=eol:\u23ce,tab:\u2420,trail:\u2420,nbsp:\u23b5
 set listchars=trail:·,space:·,tab:__
 set list
+function! ToggleList()
+	let w:listcharson = get(w:, 'listcharson', 1)
+	if (w:listcharson)
+		let w:listcharson = 0
+		set nolist
+	else
+		let w:listcharson = 1
+		set list
+	endif
+endfunction
+map <leader>l :call ToggleList()<cr>
 hi SpecialKey ctermfg=grey guifg=grey40
+
+"inspired by https://www.reddit.com/r/vim/comments/6hbsh8/zoom_window_tmux_style_zoom_pane_in_vim/
+let g:zoom_state = 0
+function! s:zoom_toggle() abort
+	let restore_cmd = winrestcmd()
+	wincmd |
+	wincmd _
+	if (g:zoom_state)
+		let g:zoom_state = 0
+		exe t:zoom_restore
+		"set number
+		set list
+	else
+		let g:zoom_state = 1
+		let t:zoom_restore = restore_cmd
+		"set nonumber
+		set nolist
+	endif
+endfunction
+map <leader>z :call <SID>zoom_toggle()<cr>
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -178,4 +211,23 @@ end
 
 " complete like bash, then list like bash, then guess like vim does by default
 set wildmode=longest,list,full
+
+if has("autocmd")
+	au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+	au InsertEnter,InsertChange *
+		\ if v:insertmode == 'i' | 
+		\ silent execute '!echo -ne "\e[5 q"' | redraw! |
+		\ elseif v:insertmode == 'r' |
+		\ silent execute '!echo -ne "\e[3 q"' | redraw! |
+		\ endif
+	au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+set ttimeoutlen=0
+set ttyfast
+
+set cul
+
+cnoreabbrev tn tabnext
+cnoreabbrev tp tabprev
+
 
