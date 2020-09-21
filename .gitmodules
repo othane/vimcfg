@@ -40,3 +40,12 @@
 [submodule "pack/plugins/opt/vim-airline"]
 	path = pack/plugins/opt/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "pack/plugins/start/vim-tmux-navigator"]
+	path = pack/plugins/start/vim-tmux-navigator
+	url = git@github.com:christoomey/vim-tmux-navigator.git
+[submodule "pack/plugins/start/vim-obsession"]
+	path = pack/plugins/start/vim-obsession
+	url = git://github.com/tpope/vim-obsession.git
+[submodule "pack/plugins/start/vim-instant-markdown"]
+	path = pack/plugins/start/vim-instant-markdown
+	url = git@github.com:suan/vim-instant-markdown.git

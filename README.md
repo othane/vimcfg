@@ -9,6 +9,8 @@ Stores my basic vim setup stuff so I can easily repo this on other machines or a
 
 `sudo npm -g install typescript` (tsuquyomi)
 
+`sudo npm -g install instant-markdown-d` or `pip install --user smdv`
+
 
 ## Why
 
@@ -33,6 +35,8 @@ tsuquyomi -- omni complete `<C-x> <C-o>` for typescript
 MatchTag -- HTML tag hihglighting
 
 emmet -- HTML/CSS autogen/refector stuff
+
+vim-instant-markdown -- markdown preview in browser [see `let g:instant_markdown_autostart = 0` and `:InstantMarkdownPreview`]
 
 
 ## See these gists for the inspiration for this
