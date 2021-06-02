@@ -61,10 +61,11 @@ map <F12> :TagbarToggle<CR>
 map <F11> :TagbarShowTag<CR>
 
 map <A-F12> :!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q -I packed+ .<CR>
-map <C-F12> :!ctags -R --fields=+l --languages=python,javascript --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js"`<CR>
+map <C-F12> :!ctags -R --fields=+l --languages=python,javascript,go --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js"`<CR>
 map <C-F9> :!ctags -R --fields=+l --languages=python,javascript --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py" -o -name "*.js"`<CR>
 "map <A-F12> :!find . -type f -iregex ".*\.js$" -exec jsctags {} -f \; <bar> sed "/^$/d" <bar> sort > jstags<CR>
-map <leader><F12> :!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q -I packed+ --languages=+python,javascript --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js" -o -name "*.c" -o -name "*.cpp" -o -name "*.h"`<CR>
+"map <leader><F12> :!ctags -R --c++-kinds=+p --fields=+liaS --extra=+q -I packed+ --languages=+python,javascript --python-kinds=-vi -f ./tags `find ./ -name "*.py" -o -name "*.js" -o -name "*.c" -o -name "*.cpp" -o -name "*.h"`<CR>
+map <leader><F12> :!ctags -R -f ./tags<CR>
 map <leader><F9> :!ctags -R --fields=+l --languages=+python --python-kinds=-vi -f $VIRTUAL_ENV/tags `find ./ -name "*.py"`<CR>
 
 "map <C-F> :lvim /<c-r>=expand("<cword>")<cr>/j ./**/*.[ch] ./**/*.cpp ./**/*.py ./**/*.js ./**/*.html<CR>:lw<CR>A
@@ -160,7 +161,7 @@ endfunc
 runtime macros/matchit.vim
 
 "set listchars=eol:\u23ce,tab:\u2420,trail:\u2420,nbsp:\u23b5
-set listchars=trail:·,space:·,tab:__
+set listchars=tab:â†’\ ,space:Â·,trail:Â·
 set list
 function! ToggleList()
 	let w:listcharson = get(w:, 'listcharson', 1)
@@ -227,7 +228,12 @@ set ttyfast
 
 set cul
 
-cnoreabbrev tn tabnext
-cnoreabbrev tp tabprev
+" cnoreabbrev tn tabnext
+" cnoreabbrev tp tabprev
 
+set clipboard=unnamedplus
+
+let g:tsuquyomi_disable_quickfix = 1
+
+" set paste
 
