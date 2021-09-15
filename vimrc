@@ -4,7 +4,7 @@ filetype off                  " required
 
 syntax on
 "syntax sync fromstart
-syntax sync minlines=200
+syntax sync minlines=2000
 filetype plugin indent on
 
 "behave mswin
@@ -13,10 +13,12 @@ set t_Co=256
 set mousemodel=popup
 set mouse=a
 
-colorscheme molokai
+colorscheme gruvbox
+set bg=dark
 if &diff
 "   "colorscheme github
-    colorscheme molokai
+    "colorscheme molokai
+    colorscheme gruvbox
 endif
 
 if has("gui_gtk2") && has("gui_running")
@@ -26,6 +28,8 @@ endif
 
 " Set doxygen syntax on always 
 let g:load_doxygen_syntax=1
+
+au BufRead,BufNewFile nginx.conf setfiletype nginx
 
 " ctags / cscope
 set tags=./tags;
@@ -236,4 +240,7 @@ set clipboard=unnamedplus
 let g:tsuquyomi_disable_quickfix = 1
 
 " set paste
+set nocursorline
+
+nnoremap <C-w>) :vert winc ]<CR>
 
