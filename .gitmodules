@@ -19,9 +19,6 @@
 [submodule "pack/plugins/start/dirdiff"]
 	path = pack/plugins/start/dirdiff
 	url = git@github.com:will133/vim-dirdiff.git
-[submodule "pack/plugins/start/typescript-vim"]
-	path = pack/plugins/start/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "pack/plugins/start/tsuquyomi"]
 	path = pack/plugins/start/tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi.git
@@ -46,6 +43,15 @@
 [submodule "pack/plugins/start/vim-obsession"]
 	path = pack/plugins/start/vim-obsession
 	url = git://github.com/tpope/vim-obsession.git
-[submodule "pack/plugins/start/vim-instant-markdown"]
-	path = pack/plugins/start/vim-instant-markdown
-	url = git@github.com:suan/vim-instant-markdown.git
+[submodule "pack/plugins/start/vim-polyglot"]
+	path = pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "pack/plugins/start/vim-go"]
+	path = pack/plugins/start/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "pack/plugins/start/vim-orgmode"]
+	path = pack/plugins/start/vim-orgmode
+	url = git@github.com:jceb/vim-orgmode.git
+[submodule "pack/plugins/start/vim-speeddating"]
+	path = pack/plugins/start/vim-speeddating
+	url = git@github.com:tpope/vim-speeddating.git

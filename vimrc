@@ -1,10 +1,10 @@
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 syntax on
 "syntax sync fromstart
-syntax sync minlines=2000
+syntax sync minlines=100000
+set synmaxcol=100000
 filetype plugin indent on
 
 "behave mswin
@@ -17,8 +17,7 @@ colorscheme gruvbox
 set bg=dark
 if &diff
 "   "colorscheme github
-    "colorscheme molokai
-    colorscheme gruvbox
+    colorscheme molokai
 endif
 
 if has("gui_gtk2") && has("gui_running")
@@ -122,7 +121,8 @@ nmap <a-right> :diffput<cr>
 
 if &diff
 	" double the width up to a reasonable maximum
-	let &columns = ((&columns*2 > 140)? 140: &columns*2)
+    let &columns = ((&columns*2 > 240)? 240: &columns*2)
+    let &lines = ((&lines*4 > 62)? 62: &lines*4)
 endif
 
 " stop large tags files from freezing the whole thing when you stop typing for
@@ -235,7 +235,8 @@ set cul
 " cnoreabbrev tn tabnext
 " cnoreabbrev tp tabprev
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set clipboard=unnamed
 
 let g:tsuquyomi_disable_quickfix = 1
 
@@ -244,3 +245,25 @@ set nocursorline
 
 nnoremap <C-w>) :vert winc ]<CR>
 
+" Move up and down in autocomplete with <c-j> and <c-k>
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" moving aroung in command mode
+cnoremap <c-h> <left>
+cnoremap <c-j> <down>
+cnoremap <c-k> <up>
+cnoremap <c-l> <right>
+
+set diffexpr=DiffW()
+function DiffW()
+  let opt = ""
+  if &diffopt =~ "icase"
+    let opt = opt . "-i "
+  endif
+  if &diffopt =~ "iwhite"
+    let opt = opt . "-w " " swapped vim's -b with -w
+  endif
+  silent execute "!diff -a --binary " . opt .
+  \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+endfunction
